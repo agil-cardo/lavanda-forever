@@ -1,3 +1,2 @@
 # lavanda forever
 
-`php $prueba= []`
