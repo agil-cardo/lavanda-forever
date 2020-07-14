@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Messages
+{% endblock %}
+
+{% block body %}
+
+	<h2>Messages</h2>
+
+	<a href=" {{ path("ajou_mensajes")}}" class="btn btn-info">Ajoute ton message</a>
+
+	<h2>Tous les messages pour soutenir l'Agriculture sont les bienvenus</h2>
+
+
+	{% for mensaje in mensajes %}
+
+		<div class="border p-2 mb-4">
+			<h2>{{ mensaje.titulo }}</h2>
+			<p>{{ mensaje.createdAt | date('Y/m/d H:i') }}</p>
+			<p><em>nombre de commentaires : </em><span class="text-info">{{ mensaje.comentarios | length }}</span></p>
+			<a href=" {{ path("show_mensaje", {'id': mensaje.id}) }}" class="btn btn-info">En Voir Plus</a>
+		</div>
+
+	{% endfor %}
+
+
+{% endblock %}

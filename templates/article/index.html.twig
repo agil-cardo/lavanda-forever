@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}les articles
+{% endblock %}
+
+{% block body %}
+	{# /* <style>
+		.example-wrapper {
+			margin: 2em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 28px / 2.5 sans-serif;
+
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+		body {
+			background-image: url: ('/images/harvesting.jpg');
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			/* width: 100%;  */
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+		
+	</style> */ #}
+
+	<h2>Voici nos articles</h2>
+
+	{% if articles %}
+     {# S'il y a des article, #}
+     {# pour chaque article dans articles #}
+
+		{# ici c'est un tableau d'où la boucle  #}
+		{% for article in articles %} 
+        {# afficher les infos ! #}
+
+        <div class="border p-2 mb-4">
+            <h2>{{ article.titre }}</h2>
+            <h4>{{ article.contenu | slice(0,50)}}...</h4>  
+			<a href="{{ path('showArticle', {'id': article.id}) }}">voir plus</a>
+        </div>
+
+		{% endfor %}
+	{% endif %}
+
+
+
+{% endblock %}

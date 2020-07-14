@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article
+{% endblock %}
+
+
+{% block body %}
+
+<div class="border p-2 mt-3 mb-4">
+	<div>
+		<a href="{{ path('article') }}" class="btn btn-info btn-sm mr-2">Retour</a>
+
+		{% if is_granted("ROLE_ADMIN") %}		
+		<a href="{{ path('deleteArticle', {'id': article.id}) }}" 
+		class="btn btn-danger btn-sm" onclick="return confirm('êtes vous sure ?');">Suprimer</a>
+		{% endif %}
+
+	</div>
+
+		<h2>{{ article.titre }}</h2>
+		<h4>{{ article.contenu }}</h4>
+		<div><img src="{{ article.foto }}" width="auto" height="300"></div>
+
+		{# si il y a un lien on l'affiche #}
+		{% if article.link %}
+
+			<a href="{{ article.link }}">
+				{# si il y a une description du lien #}
+				{% if article.describLien %}
+					{{ article.describLien }}
+
+				{# sino affiche le lien de l'article #}
+				{% else %}
+					{{ article.link }}
+				{% endif %}			
+			</a>
+
+		{% endif %}		
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}bienvenido
+{% endblock %}
+
+{% block body %}
+
+	<h1>Lavande</h1>
+
+	{% if app.user %}
+		<h1>Welcome {{ app.user.nombre }}</h1>
+
+		<a class="btn btn-dark" href="{{ path('app_logout') }}">Déconnexion</a>
+		<a class="btn btn-success" href="{{ path('mensajes') }}">Mensajes</a>
+	{% endif %}
+
+	<h3>La fleur bleu que les abeilles aiment</h3>
+
+	<h5>Les abeilles répresentent 60 à 90 % de la faune pollinisatrice, elles sont donc essentielles
+	pour l'agriculture, et par consequence, pour l'avenir de l'humanité... </h5>
+
+	{% if not app.user %}	
+		<h5> ...si tu veux aider à sa protection, connecte-toi!</h5>
+		<div class="m-2">
+			<a class="btn btn-dark" href="{{ path('app_login') }}">Connexion</a>
+			<a class="btn btn-success" href="{{ path('app_register') }}">Inscription</a>
+		</div>
+	{% endif %}
+
+	<img src="/Images/avecAbeilles.jpg" width="100%" height="auto" class="img-avecAbeilles">
+
+{% endblock %}
